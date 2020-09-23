@@ -12,4 +12,4 @@ repository: "se-edu/addressbook-level3"
 github_icon: "images/github-icon.png"
 
 plugins:
-  - jemoji
+  - jekyll-spaceship

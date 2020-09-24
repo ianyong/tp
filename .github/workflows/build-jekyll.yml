@@ -39,7 +39,7 @@ jobs:
       - name: Build
         env:
           JEKYLL_ENV: production
-        run: bundle exec jekyll build
+        run: bundle exec jekyll build --baseurl ${{ github.event.repository.name }} # Set the repo name as the base URL
 
       # Deploy to GitHub Pages
       - name: Deploy

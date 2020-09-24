@@ -16,7 +16,8 @@ plugins:
   - jekyll-coffeescript
   - jekyll-default-layout
   - jekyll-gist
-  - jekyll-github-metadata
+  # Disabled since we are building the files manually.
+  # - jekyll-github-metadata
   - jekyll-optional-front-matter
   - jekyll-paginate
   - jekyll-readme-index

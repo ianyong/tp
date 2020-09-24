@@ -8,7 +8,7 @@ title: Meeting Minutes
   {% for page in sorted_minutes %}
     {% if page.layout == "minutes" %}
       <li>
-        <a href="{{ page.url }}">Minutes for {{ page.date | date: "%-d %B %Y" }}</a>
+        <a href="{{ site.baseurl | append: page.url }}">Minutes for {{ page.date | date: "%-d %B %Y" }}</a>
       </li>
     {% endif %}
   {% endfor %}

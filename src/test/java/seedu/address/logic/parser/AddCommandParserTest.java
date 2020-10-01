@@ -58,10 +58,6 @@ public class AddCommandParserTest {
         assertParseSuccess(parser, NAME_DESC_BOB + AMOUNT_DESC_BOB + DATE_DESC_AMY + DATE_DESC_BOB
                 + CATEGORY_DESC_FRIEND, new AddCommand(expectedTransaction));
 
-        // multiple addresses - last address accepted
-        assertParseSuccess(parser, NAME_DESC_BOB + AMOUNT_DESC_BOB + DATE_DESC_BOB + CATEGORY_DESC_FRIEND,
-                new AddCommand(expectedTransaction));
-
         // multiple categories - all accepted
         Transaction expectedTransactionMultipleTags = new TransactionBuilder(BOB)
                 .withCategories(VALID_CATEGORY_FRIEND, VALID_CATEGORY_HUSBAND).build();

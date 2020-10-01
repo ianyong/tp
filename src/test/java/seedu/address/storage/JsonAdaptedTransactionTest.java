@@ -19,7 +19,6 @@ import seedu.address.model.transaction.Name;
 public class JsonAdaptedTransactionTest {
     private static final String INVALID_NAME = "R@chel";
     private static final String INVALID_AMOUNT = "+651234";
-    private static final String INVALID_ADDRESS = " ";
     private static final String INVALID_DATE = "example.com";
     private static final String INVALID_CATEGORY = "#friend";
 

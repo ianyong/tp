@@ -17,6 +17,9 @@ import ay2021s1_cs2103_w16_3.finesse.model.transaction.Date;
 import ay2021s1_cs2103_w16_3.finesse.model.transaction.Expense;
 import ay2021s1_cs2103_w16_3.finesse.model.transaction.Name;
 
+/**
+ * Parses input arguments and creates a new AddExpenseCommand object
+ */
 public class AddExpenseCommandParser implements Parser<AddExpenseCommand> {
 
     /**

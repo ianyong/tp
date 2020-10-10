@@ -22,7 +22,7 @@ public interface Logic {
      *
      * @param commandText The command as entered by the user.
      * @param uiState The current state of the UI.
-     * @return the result of the command execution.
+     * @return The result of the command execution.
      * @throws CommandException If an error occurs during command execution.
      * @throws ParseException If an error occurs during parsing.
      */

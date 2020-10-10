@@ -31,7 +31,7 @@ public class UiState {
     /**
      * Creates a {@code UiState} with the specified currently selected tab.
      *
-     * @param currentTab the currently selected tab.
+     * @param currentTab The currently selected tab.
      */
     public UiState(Tab currentTab) {
         requireNonNull(currentTab);
@@ -41,7 +41,7 @@ public class UiState {
     /**
      * Returns the currently selected tab.
      *
-     * @return the currently selected tab.
+     * @return The currently selected tab.
      */
     public Tab getCurrentTab() {
         return currentTab;
@@ -50,7 +50,7 @@ public class UiState {
     /**
      * Updates the currently selected tab.
      *
-     * @param currentTab the currently selected tab.
+     * @param currentTab The currently selected tab.
      */
     public void setCurrentTab(Tab currentTab) {
         requireNonNull(currentTab);

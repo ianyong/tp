@@ -25,6 +25,7 @@ import ay2021s1_cs2103_w16_3.finesse.logic.commands.HelpCommand;
 import ay2021s1_cs2103_w16_3.finesse.logic.commands.ListCommand;
 import ay2021s1_cs2103_w16_3.finesse.logic.commands.ListExpenseCommand;
 import ay2021s1_cs2103_w16_3.finesse.logic.commands.ListIncomeCommand;
+import ay2021s1_cs2103_w16_3.finesse.logic.commands.TabCommand;
 import ay2021s1_cs2103_w16_3.finesse.logic.parser.exceptions.ParseException;
 import ay2021s1_cs2103_w16_3.finesse.model.transaction.Expense;
 import ay2021s1_cs2103_w16_3.finesse.model.transaction.Income;
@@ -426,6 +427,34 @@ public class FinanceTrackerParserTest {
                 instanceof ListIncomeCommand);
         assertTrue(parser.parseCommand(ListIncomeCommand.COMMAND_WORD + " 3",
                 analyticsUiStateStub) instanceof ListIncomeCommand);
+    }
+
+    @Test
+    public void parseCommand_tabWhenOverviewTab() throws Exception {
+        TabCommand command = (TabCommand) parser.parseCommand(
+                TabCommand.COMMAND_WORD + " 1", overviewUiStateStub);
+        assertEquals(new TabCommand(UiState.Tab.OVERVIEW), command);
+    }
+
+    @Test
+    public void parseCommand_tabWhenIncomeTab() throws Exception {
+        TabCommand command = (TabCommand) parser.parseCommand(
+                TabCommand.COMMAND_WORD + " 1", incomeUiStateStub);
+        assertEquals(new TabCommand(UiState.Tab.OVERVIEW), command);
+    }
+
+    @Test
+    public void parseCommand_tabWhenExpensesTab() throws Exception {
+        TabCommand command = (TabCommand) parser.parseCommand(
+                TabCommand.COMMAND_WORD + " 1", expensesUiStateStub);
+        assertEquals(new TabCommand(UiState.Tab.OVERVIEW), command);
+    }
+
+    @Test
+    public void parseCommand_tabWhenAnalyticsTab() throws Exception {
+        TabCommand command = (TabCommand) parser.parseCommand(
+                TabCommand.COMMAND_WORD + " 1", analyticsUiStateStub);
+        assertEquals(new TabCommand(UiState.Tab.OVERVIEW), command);
     }
 
     @Test

@@ -41,4 +41,11 @@ public class TabCommand extends Command {
         String formattedSuccessMessage = String.format(MESSAGE_SWITCH_TABS_SUCCESS, tabToSwitchTo);
         return new CommandResult(formattedSuccessMessage, tabToSwitchTo);
     }
+
+    @Override
+    public boolean equals(Object other) {
+        return other == this // Short circuit if same object.
+                || (other instanceof TabCommand // instanceof handles nulls.
+                && tabToSwitchTo.equals(((TabCommand) other).tabToSwitchTo)); // State check.
+    }
 }

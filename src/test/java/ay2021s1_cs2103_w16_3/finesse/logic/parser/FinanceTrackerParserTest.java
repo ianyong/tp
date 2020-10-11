@@ -13,6 +13,7 @@ import java.util.stream.Collectors;
 
 import org.junit.jupiter.api.Test;
 
+import ay2021s1_cs2103_w16_3.finesse.commons.core.index.Index;
 import ay2021s1_cs2103_w16_3.finesse.logic.commands.AddCommand;
 import ay2021s1_cs2103_w16_3.finesse.logic.commands.AddExpenseCommand;
 import ay2021s1_cs2103_w16_3.finesse.logic.commands.AddIncomeCommand;
@@ -433,28 +434,28 @@ public class FinanceTrackerParserTest {
     public void parseCommand_tabWhenOverviewTab() throws Exception {
         TabCommand command = (TabCommand) parser.parseCommand(
                 TabCommand.COMMAND_WORD + " 1", overviewUiStateStub);
-        assertEquals(new TabCommand(UiState.Tab.OVERVIEW), command);
+        assertEquals(new TabCommand(Index.fromOneBased(1)), command);
     }
 
     @Test
     public void parseCommand_tabWhenIncomeTab() throws Exception {
         TabCommand command = (TabCommand) parser.parseCommand(
                 TabCommand.COMMAND_WORD + " 1", incomeUiStateStub);
-        assertEquals(new TabCommand(UiState.Tab.OVERVIEW), command);
+        assertEquals(new TabCommand(Index.fromOneBased(1)), command);
     }
 
     @Test
     public void parseCommand_tabWhenExpensesTab() throws Exception {
         TabCommand command = (TabCommand) parser.parseCommand(
                 TabCommand.COMMAND_WORD + " 1", expensesUiStateStub);
-        assertEquals(new TabCommand(UiState.Tab.OVERVIEW), command);
+        assertEquals(new TabCommand(Index.fromOneBased(1)), command);
     }
 
     @Test
     public void parseCommand_tabWhenAnalyticsTab() throws Exception {
         TabCommand command = (TabCommand) parser.parseCommand(
                 TabCommand.COMMAND_WORD + " 1", analyticsUiStateStub);
-        assertEquals(new TabCommand(UiState.Tab.OVERVIEW), command);
+        assertEquals(new TabCommand(Index.fromOneBased(1)), command);
     }
 
     @Test

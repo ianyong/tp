@@ -5,7 +5,6 @@ import static ay2021s1_cs2103_w16_3.finesse.commons.core.Messages.MESSAGE_INVALI
 import ay2021s1_cs2103_w16_3.finesse.commons.core.index.Index;
 import ay2021s1_cs2103_w16_3.finesse.logic.commands.TabCommand;
 import ay2021s1_cs2103_w16_3.finesse.logic.parser.exceptions.ParseException;
-import ay2021s1_cs2103_w16_3.finesse.ui.UiState.Tab;
 
 /**
  * Parses input arguments and creates a new {@code TabCommand} object.
@@ -19,11 +18,7 @@ public class TabCommandParser implements Parser<TabCommand> {
     public TabCommand parse(String args) throws ParseException {
         try {
             Index index = ParserUtil.parseIndex(args);
-            if (index.getOneBased() > TabCommand.NUM_OF_TABS) {
-                throw new ParseException(
-                        String.format(MESSAGE_INVALID_COMMAND_FORMAT, TabCommand.MESSAGE_TAB_DOES_NOT_EXIST));
-            }
-            return new TabCommand(Tab.values()[index.getZeroBased()]);
+            return new TabCommand(index);
         } catch (ParseException pe) {
             throw new ParseException(
                     String.format(MESSAGE_INVALID_COMMAND_FORMAT, TabCommand.MESSAGE_USAGE), pe);

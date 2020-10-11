@@ -19,6 +19,10 @@ public class TabCommandParser implements Parser<TabCommand> {
     public TabCommand parse(String args) throws ParseException {
         try {
             Index index = ParserUtil.parseIndex(args);
+            if (index.getOneBased() > TabCommand.NUM_OF_TABS) {
+                throw new ParseException(
+                        String.format(MESSAGE_INVALID_COMMAND_FORMAT, TabCommand.MESSAGE_TAB_DOES_NOT_EXIST));
+            }
             return new TabCommand(Tab.values()[index.getZeroBased()]);
         } catch (ParseException pe) {
             throw new ParseException(

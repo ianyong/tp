@@ -7,6 +7,8 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.junit.jupiter.api.Test;
 
+import ay2021s1_cs2103_w16_3.finesse.ui.UiState.Tab;
+
 public class CommandResultTest {
     @Test
     public void equals() {
@@ -14,7 +16,7 @@ public class CommandResultTest {
 
         // same values -> returns true
         assertTrue(commandResult.equals(new CommandResult("feedback")));
-        assertTrue(commandResult.equals(new CommandResult("feedback", false, false)));
+        assertTrue(commandResult.equals(new CommandResult("feedback", false, false, null)));
 
         // same object -> returns true
         assertTrue(commandResult.equals(commandResult));
@@ -33,6 +35,9 @@ public class CommandResultTest {
 
         // different exit value -> returns false
         assertFalse(commandResult.equals(new CommandResult("feedback", false, true)));
+
+        // different tabToSwitchTo value -> returns false
+        assertFalse(commandResult.equals(new CommandResult("feedback", Tab.ANALYTICS)));
     }
 
     @Test
@@ -50,5 +55,8 @@ public class CommandResultTest {
 
         // different exit value -> returns different hashcode
         assertNotEquals(commandResult.hashCode(), new CommandResult("feedback", false, true).hashCode());
+
+        // different tabToSwitchTo value -> returns different hashcode
+        assertNotEquals(commandResult.hashCode(), new CommandResult("feedback", false, false, Tab.INCOME));
     }
 }

@@ -14,7 +14,7 @@ public class ListIncomeCommand extends Command {
     public static final String COMMAND_WORD = "ls-income";
     public static final String COMMAND_ALIAS = "lsi";
 
-    public static final String MESSAGE_SUCCESS = "Listed all income";
+    public static final String MESSAGE_SUCCESS = "Listed all income.";
 
 
     @Override

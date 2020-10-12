@@ -14,7 +14,7 @@ public class ListExpenseCommand extends Command {
     public static final String COMMAND_WORD = "ls-expense";
     public static final String COMMAND_ALIAS = "lse";
 
-    public static final String MESSAGE_SUCCESS = "Listed all expenses";
+    public static final String MESSAGE_SUCCESS = "Listed all expenses.";
 
 
     @Override

@@ -105,7 +105,17 @@ public class FinanceTrackerParser {
             }
 
         case ListCommand.COMMAND_WORD:
-            return new ListCommand();
+            switch (uiState.getCurrentTab()) {
+            case OVERVIEW:
+                return new ListTransactionCommand();
+            case EXPENSES:
+                return new ListExpenseCommand();
+            case INCOME:
+                return new ListIncomeCommand();
+            default:
+                throw new ParseException(commandInvalidTabMessage(commandWord,
+                        Tab.OVERVIEW, Tab.EXPENSES, Tab.INCOME));
+            }
 
         case ListTransactionCommand.COMMAND_WORD:
         case ListTransactionCommand.COMMAND_ALIAS:

@@ -335,30 +335,31 @@ public class FinanceTrackerParserTest {
 
     @Test
     public void parseCommand_listWhenOverviewTab() throws Exception {
-        assertTrue(parser.parseCommand(ListCommand.COMMAND_WORD, overviewUiStateStub) instanceof ListCommand);
+        assertTrue(parser.parseCommand(ListCommand.COMMAND_WORD, overviewUiStateStub)
+                instanceof ListTransactionCommand);
         assertTrue(parser.parseCommand(ListCommand.COMMAND_WORD + " 3",
-                overviewUiStateStub) instanceof ListCommand);
+                overviewUiStateStub) instanceof ListTransactionCommand);
     }
 
     @Test
     public void parseCommand_listWhenIncomeTab() throws Exception {
-        assertTrue(parser.parseCommand(ListCommand.COMMAND_WORD, incomeUiStateStub) instanceof ListCommand);
+        assertTrue(parser.parseCommand(ListCommand.COMMAND_WORD, incomeUiStateStub)
+                instanceof ListIncomeCommand);
         assertTrue(parser.parseCommand(ListCommand.COMMAND_WORD + " 3",
-                incomeUiStateStub) instanceof ListCommand);
+                incomeUiStateStub) instanceof ListIncomeCommand);
     }
 
     @Test
     public void parseCommand_listWhenExpensesTab() throws Exception {
-        assertTrue(parser.parseCommand(ListCommand.COMMAND_WORD, expensesUiStateStub) instanceof ListCommand);
+        assertTrue(parser.parseCommand(ListCommand.COMMAND_WORD, expensesUiStateStub)
+                instanceof ListExpenseCommand);
         assertTrue(parser.parseCommand(ListCommand.COMMAND_WORD + " 3",
-                expensesUiStateStub) instanceof ListCommand);
+                expensesUiStateStub) instanceof ListExpenseCommand);
     }
 
     @Test
     public void parseCommand_listWhenAnalyticsTab() throws Exception {
-        assertTrue(parser.parseCommand(ListCommand.COMMAND_WORD, analyticsUiStateStub) instanceof ListCommand);
-        assertTrue(parser.parseCommand(ListCommand.COMMAND_WORD + " 3",
-                analyticsUiStateStub) instanceof ListCommand);
+        assertThrows(ParseException.class, () -> parser.parseCommand(ListCommand.COMMAND_WORD, analyticsUiStateStub));
     }
 
     @Test

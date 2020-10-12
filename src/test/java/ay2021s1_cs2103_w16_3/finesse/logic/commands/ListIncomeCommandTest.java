@@ -12,6 +12,7 @@ import ay2021s1_cs2103_w16_3.finesse.model.ModelManager;
 import ay2021s1_cs2103_w16_3.finesse.model.UserPrefs;
 import ay2021s1_cs2103_w16_3.finesse.model.transaction.Income;
 import ay2021s1_cs2103_w16_3.finesse.testutil.TransactionBuilder;
+import ay2021s1_cs2103_w16_3.finesse.ui.UiState.Tab;
 
 /**
  * Contains integration tests (interaction with the Model) and unit tests for ListIncomeCommand.
@@ -30,7 +31,8 @@ public class ListIncomeCommandTest {
     @Test
     public void execute_showsIncomeOnly() {
         expectedModel.updateFilteredTransactionList(Income.PREDICATE_SHOW_ALL_INCOME);
-        assertCommandSuccess(new ListIncomeCommand(), model, ListIncomeCommand.MESSAGE_SUCCESS, expectedModel);
+        assertCommandSuccess(new ListIncomeCommand(), model,
+                new CommandResult(ListIncomeCommand.MESSAGE_SUCCESS, Tab.INCOME), expectedModel);
     }
 
     @Test
@@ -38,7 +40,8 @@ public class ListIncomeCommandTest {
         model.addTransaction(new TransactionBuilder().buildIncome());
         expectedModel = new ModelManager(model.getFinanceTracker(), new UserPrefs());
         expectedModel.updateFilteredTransactionList(transaction -> transaction instanceof Income);
-        assertCommandSuccess(new ListIncomeCommand(), model, ListIncomeCommand.MESSAGE_SUCCESS, expectedModel);
+        assertCommandSuccess(new ListIncomeCommand(), model,
+                new CommandResult(ListIncomeCommand.MESSAGE_SUCCESS, Tab.INCOME), expectedModel);
         assertEquals(model.getFilteredTransactionList().size(), 1);
     }
 
@@ -47,7 +50,8 @@ public class ListIncomeCommandTest {
         model.addTransaction(new TransactionBuilder().buildExpense());
         expectedModel = new ModelManager(model.getFinanceTracker(), new UserPrefs());
         expectedModel.updateFilteredTransactionList(transaction -> transaction instanceof Income);
-        assertCommandSuccess(new ListIncomeCommand(), model, ListIncomeCommand.MESSAGE_SUCCESS, expectedModel);
+        assertCommandSuccess(new ListIncomeCommand(), model,
+                new CommandResult(ListIncomeCommand.MESSAGE_SUCCESS, Tab.INCOME), expectedModel);
         assertEquals(model.getFilteredTransactionList().size(), 0);
     }
 

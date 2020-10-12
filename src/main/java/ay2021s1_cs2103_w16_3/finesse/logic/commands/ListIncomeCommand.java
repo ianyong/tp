@@ -4,6 +4,7 @@ import static ay2021s1_cs2103_w16_3.finesse.model.transaction.Income.PREDICATE_S
 import static java.util.Objects.requireNonNull;
 
 import ay2021s1_cs2103_w16_3.finesse.model.Model;
+import ay2021s1_cs2103_w16_3.finesse.ui.UiState.Tab;
 
 /**
  * Lists all income in the finance tracker to the user.
@@ -20,6 +21,6 @@ public class ListIncomeCommand extends Command {
     public CommandResult execute(Model model) {
         requireNonNull(model);
         model.updateFilteredTransactionList(PREDICATE_SHOW_ALL_INCOME);
-        return new CommandResult(MESSAGE_SUCCESS);
+        return new CommandResult(MESSAGE_SUCCESS, Tab.INCOME);
     }
 }

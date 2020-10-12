@@ -27,9 +27,11 @@ import ay2021s1_cs2103_w16_3.finesse.logic.commands.HelpCommand;
 import ay2021s1_cs2103_w16_3.finesse.logic.commands.ListCommand;
 import ay2021s1_cs2103_w16_3.finesse.logic.commands.ListExpenseCommand;
 import ay2021s1_cs2103_w16_3.finesse.logic.commands.ListIncomeCommand;
+import ay2021s1_cs2103_w16_3.finesse.logic.commands.ListTransactionCommand;
 import ay2021s1_cs2103_w16_3.finesse.logic.commands.TabCommand;
 import ay2021s1_cs2103_w16_3.finesse.logic.parser.exceptions.ParseException;
 import ay2021s1_cs2103_w16_3.finesse.ui.UiState;
+import ay2021s1_cs2103_w16_3.finesse.ui.UiState.Tab;
 
 /**
  * Parses user input.
@@ -82,7 +84,7 @@ public class FinanceTrackerParser {
                 return new DeleteIncomeCommand(baseDeleteCommand);
             default:
                 throw new ParseException(commandInvalidTabMessage(commandWord,
-                        UiState.Tab.EXPENSES, UiState.Tab.INCOME));
+                        Tab.EXPENSES, Tab.INCOME));
             }
 
         case ClearCommand.COMMAND_WORD:
@@ -99,11 +101,15 @@ public class FinanceTrackerParser {
                 return new FindIncomeCommand(baseFindCommand);
             default:
                 throw new ParseException(commandInvalidTabMessage(commandWord,
-                        UiState.Tab.OVERVIEW, UiState.Tab.EXPENSES, UiState.Tab.INCOME));
+                        Tab.OVERVIEW, Tab.EXPENSES, Tab.INCOME));
             }
 
         case ListCommand.COMMAND_WORD:
             return new ListCommand();
+
+        case ListTransactionCommand.COMMAND_WORD:
+        case ListTransactionCommand.COMMAND_ALIAS:
+            return new ListTransactionCommand();
 
         case ListExpenseCommand.COMMAND_WORD:
         case ListExpenseCommand.COMMAND_ALIAS:

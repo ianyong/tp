@@ -149,9 +149,9 @@ public class FinanceTrackerParser {
      * @param tabs The tabs that the command is applicable to.
      * @return The error message to be displayed to the user.
      */
-    private String commandInvalidTabMessage(String command, UiState.Tab... tabs) {
+    private String commandInvalidTabMessage(String command, Tab... tabs) {
         return String.format(MESSAGE_INVALID_TAB_FORMAT, command,
-                Stream.of(tabs).map(UiState.Tab::toString).collect(Collectors.joining(", ")));
+                Stream.of(tabs).map(Tab::toString).collect(Collectors.joining(", ")));
     }
 
 }

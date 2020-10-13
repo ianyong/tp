@@ -29,9 +29,9 @@ import ay2021s1_cs2103_w16_3.finesse.testutil.TransactionBuilder;
 
 /**
  * Contains integration tests (interaction with the Model, UndoCommand and RedoCommand) and unit tests
- * for EditExpensesCommand.
+ * for EditExpenseCommand.
  */
-public class EditExpensesCommandTest {
+public class EditExpenseCommandTest {
 
     private Model model = new ModelManager(getTypicalFinanceTracker(), new UserPrefs());
 
@@ -86,7 +86,6 @@ public class EditExpensesCommandTest {
         assertCommandSuccess(editExpenseCommand, model, expectedMessage, expectedModel);
     }
 
-    /* TODO: Test fails after substituting all the transaction commands for expense commands.
     @Test
     public void execute_filteredList_success() {
         showExpenseAtIndex(model, INDEX_FIRST_TRANSACTION);
@@ -105,7 +104,6 @@ public class EditExpensesCommandTest {
 
         assertCommandSuccess(editExpenseCommand, model, expectedMessage, expectedModel);
     }
-     */
 
     @Test
     public void execute_invalidExpenseIndexUnfilteredList_failure() {

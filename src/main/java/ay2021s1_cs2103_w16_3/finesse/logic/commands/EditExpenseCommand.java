@@ -39,7 +39,7 @@ public class EditExpenseCommand extends EditCommand {
         Expense editedExpense = createEditedExpense(expenseToEdit, getEditTransactionDescriptor());
 
         model.setExpense(expenseToEdit, editedExpense);
-        model.updateFilteredTransactionList(PREDICATE_SHOW_ALL_TRANSACTIONS);
+        model.updateFilteredExpenseList(PREDICATE_SHOW_ALL_TRANSACTIONS);
         return new CommandResult(String.format(MESSAGE_EDIT_TRANSACTION_SUCCESS, editedExpense));
     }
 

@@ -17,6 +17,7 @@ import ay2021s1_cs2103_w16_3.finesse.logic.commands.exceptions.CommandException;
 import ay2021s1_cs2103_w16_3.finesse.model.FinanceTracker;
 import ay2021s1_cs2103_w16_3.finesse.model.Model;
 import ay2021s1_cs2103_w16_3.finesse.model.transaction.Expense;
+import ay2021s1_cs2103_w16_3.finesse.model.transaction.Income;
 import ay2021s1_cs2103_w16_3.finesse.model.transaction.TitleContainsKeywordsPredicate;
 import ay2021s1_cs2103_w16_3.finesse.model.transaction.Transaction;
 import ay2021s1_cs2103_w16_3.finesse.testutil.EditTransactionDescriptorBuilder;
@@ -133,5 +134,19 @@ public class CommandTestUtil {
         model.updateFilteredExpenseList(new TitleContainsKeywordsPredicate(Arrays.asList(splitTitle[0])));
 
         assertEquals(1, model.getFilteredExpenseList().size());
+    }
+
+    /**
+     * Updates {@code model}'s filtered list to show only the income at the given {@code targetIndex} in the
+     * {@code model}'s finance tracker.
+     */
+    public static void showIncomeAtIndex(Model model, Index targetIndex) {
+        assertTrue(targetIndex.getZeroBased() < model.getFilteredIncomeList().size());
+
+        Income income = model.getFilteredIncomeList().get(targetIndex.getZeroBased());
+        final String[] splitTitle = income.getTitle().fullTitle.split("\\s+");
+        model.updateFilteredIncomeList(new TitleContainsKeywordsPredicate(Arrays.asList(splitTitle[0])));
+
+        assertEquals(1, model.getFilteredIncomeList().size());
     }
 }

@@ -23,7 +23,7 @@ public class UiState {
          *
          * @param tabIndex The index of the tab in the {@code TabPane}.
          */
-        private Tab(int tabIndex) {
+        Tab(int tabIndex) {
             this.tabIndex = tabIndex;
         }
 
